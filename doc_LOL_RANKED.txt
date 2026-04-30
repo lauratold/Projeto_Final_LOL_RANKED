@@ -1,0 +1,21 @@
+Optei por utilizar predominantemente as variáveis do time azul para evitar a redundância de dados (multicolinearidade), uma vez que variáveis
+como 'GoldDiff' e 'ExperienceDiff' já sintetizam o desempenho relativo entre as duas equipas. Além disso, por se tratar de um jogo de soma zero,
+o sucesso de uma equipa é o reflexo direto do insucesso da outra.
+
+Se eu colocasse blueKills e redDeaths juntos, o modelo teria uma precisão artificialmente alta porque essas duas colunas dizem exatamente a mesma
+coisa (cada abate do azul é uma morte do vermelho). Isso é considerado um erro de "Data Leakage" (Vazamento de Dados) em ciência de dados.
+
+Foi necessário ajustar o Pandas para a versão 2.x para garantir a estabilidade do ambiente de visualização (Streamlit/Seaborn).
+
+Eliminei partidas com dados "poluídos" (como spam de wards), o que torna o aprendizado do modelo mais focado em comportamentos reais de jogo.
+
+Binarizar as variáveis (blueGoldLead) permitiu que a Árvore de Decisão focasse no estado estratégico do jogo, tornando o modelo menos sensível a 
+variações pequenas e mais preciso em prever vitórias reais.
+
+Excluí variáveis que não tinham impacto estatístico superior a 0.1 na vitória. Isso simplifica o modelo e evita o overfitting.
+
+Este valor representa o AUC (Área sob a Curva ROC). Ele indica que o modelo tem 77,3% de probabilidade de distinguir corretamente entre uma 
+vitória e uma derrota. Isso valida que as métricas de ouro e objetivos aos 10 minutos são indicadores altamente confiáveis para prever o desfecho
+ da partida, restando cerca de 23% de incerteza devido a fatores imensuráveis do jogo, como erros humanos ou lutas de final de partida."
+
+
